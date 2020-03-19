@@ -57,17 +57,48 @@
 // ========================
 // Factory Pattern
 // add question
+// function createQuestion(title, option = [], answerIndex) {
+//   let question = {};
+//   question.title = title;
+//   question.option = option;
+//   question.answerIndex = answerIndex;
+//   question.checkAnswer = function(value) {
+//     return question.option[answerIndex] === value;
+//   };
+//   question.getAnswer = function() {
+//     return question.option[answerIndex];
+//   };
+//   return question;
+// }
+// let questionOne = createQuestion(
+//   "who is the vice captain of india in test cricket",
+//   ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
+//   0
+// );
+// console.log(questionOne);
+// console.log(questionOne.checkAnswer("Rohit Sharma"));
+// console.log(questionOne.checkAnswer("Ishant Sharma"));
+// console.log(questionOne.getAnswer());
+
+// =====================
+
+//  __proto__
+
+var questionMethod = {
+  checkAnswer: function(value) {
+    return this.option[this.answerIndex] === value;
+  },
+  getAnswer: function() {
+    return this.option[this.answerIndex];
+  }
+};
+
 function createQuestion(title, option = [], answerIndex) {
-  let question = {};
+  let question = Object.create(questionMethod);
   question.title = title;
   question.option = option;
   question.answerIndex = answerIndex;
-  question.checkAnswer = function(value) {
-    return question.option[answerIndex] === value;
-  };
-  question.getAnswer = function() {
-    return question.option[answerIndex];
-  };
+
   return question;
 }
 let questionOne = createQuestion(
