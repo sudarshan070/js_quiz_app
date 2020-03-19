@@ -34,22 +34,48 @@
 
 // ==================================
 
-createUserInffo = {
-  incrementScore: function() {
-    return ++this.score;
-  },
-  decrementScore: function() {
-    return --this.score;
-  },
-  changeName: function(newName) {
-    return (this.name = newName);
-  }
-};
+// createUserInffo = {
+//   incrementScore: function() {
+//     return ++this.score;
+//   },
+//   decrementScore: function() {
+//     return --this.score;
+//   },
+//   changeName: function(newName) {
+//     return (this.name = newName);
+//   }
+// };
 
-function createUser(name) {
-  var obj = {};
-  obj = Object.create(createUserInffo);
-  obj.name = name;
-  obj.score = 0;
-  return obj;
+// function createUser(name) {
+//   var obj = {};
+//   obj = Object.create(createUserInffo);
+//   obj.name = name;
+//   obj.score = 0;
+//   return obj;
+// }
+
+// ========================
+// Factory Pattern
+// add question
+function createQuestion(title, option = [], answerIndex) {
+  let question = {};
+  question.title = title;
+  question.option = option;
+  question.answerIndex = answerIndex;
+  question.checkAnswer = function(value) {
+    return question.option[answerIndex] === value;
+  };
+  question.getAnswer = function() {
+    return question.option[answerIndex];
+  };
+  return question;
 }
+let questionOne = createQuestion(
+  "who is the vice captain of india in test cricket",
+  ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
+  0
+);
+console.log(questionOne);
+console.log(questionOne.checkAnswer("Rohit Sharma"));
+console.log(questionOne.checkAnswer("Ishant Sharma"));
+console.log(questionOne.getAnswer());
