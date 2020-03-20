@@ -113,19 +113,43 @@
 
 //
 
-function createQuestion(title, option = [], answerIndex) {
-  this.title = title;
-  this.option = option;
-  this.answerIndex = answerIndex;
+// function createQuestion(title, option = [], answerIndex) {
+//   this.title = title;
+//   this.option = option;
+//   this.answerIndex = answerIndex;
+// }
+
+// createQuestion.prototype.checkAnswer = function(value) {
+//   return this.option[this.answerIndex] === value;
+// };
+
+// createQuestion.prototype.getAnswer = function() {
+//   return this.option[this.answerIndex];
+// };
+
+// let questionOne = new createQuestion(
+//   "who is the vice captain of india in test cricket",
+//   ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
+//   0
+// );
+// console.log(questionOne);
+// console.log(questionOne.checkAnswer("Rohit Sharma"));
+// console.log(questionOne.checkAnswer("Ishant Sharma"));
+// console.log(questionOne.getAnswer());
+
+class createQuestion {
+  constructor(title, option = [], answerIndex) {
+    this.title = title;
+    this.option = option;
+    this.answerIndex = answerIndex;
+  }
+  checkAnswer(value) {
+    return this.option[this.answerIndex] === value;
+  }
+  getAnswer() {
+    return this.option[this.answerIndex];
+  }
 }
-
-createQuestion.prototype.checkAnswer = function(value) {
-  return this.option[this.answerIndex] === value;
-};
-
-createQuestion.prototype.getAnswer = function() {
-  return this.option[this.answerIndex];
-};
 
 let questionOne = new createQuestion(
   "who is the vice captain of india in test cricket",
