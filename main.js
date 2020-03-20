@@ -167,19 +167,45 @@
 //
 //
 
+// function createQuestion(t, o = [], ai) {
+//   var question = {};
+//   question.titel = t;
+//   question.option = o;
+//   question.answerIndex = ai;
+//   question.getAnswer = function() {
+//     return question.option[ai];
+//   };
+//   question.checkAnswer = function(value) {
+//     return question.option[ai] === value;
+//   };
+//   return question;
+// }
+// var questionOne = createQuestion(
+//   "Who is finance minister of India",
+//   ["Amit Shaha", "Nitin Gadkari", "Nirmala Sitharaman", "Rajnath Singh"],
+//   2
+// );
+// console.log(questionOne.checkAnswer("Nitin Gadkari"));
+// console.log(questionOne.checkAnswer("Nirmala Sitharaman"));
+
+//
+var questionMethod = {
+  checkAnswer: function(value) {
+    return this.option[this.answerIndex] === value;
+  },
+  getAnswer: function() {
+    return this.option[this.answerIndex];
+  }
+};
+
 function createQuestion(t, o = [], ai) {
-  var question = {};
+  var question = Object.create(questionMethod);
   question.titel = t;
   question.option = o;
   question.answerIndex = ai;
-  question.getAnswer = function() {
-    return question.option[ai];
-  };
-  question.checkAnswer = function(value) {
-    return question.option[ai] === value;
-  };
   return question;
 }
+
 var questionOne = createQuestion(
   "Who is finance minister of India",
   ["Amit Shaha", "Nitin Gadkari", "Nirmala Sitharaman", "Rajnath Singh"],
