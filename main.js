@@ -111,7 +111,7 @@
 // console.log(questionOne.checkAnswer("Ishant Sharma"));
 // console.log(questionOne.getAnswer());
 
-//
+//======================
 
 // function createQuestion(title, option = [], answerIndex) {
 //   this.title = title;
@@ -137,26 +137,53 @@
 // console.log(questionOne.checkAnswer("Ishant Sharma"));
 // console.log(questionOne.getAnswer());
 
-class createQuestion {
-  constructor(title, option = [], answerIndex) {
-    this.title = title;
-    this.option = option;
-    this.answerIndex = answerIndex;
-  }
-  checkAnswer(value) {
-    return this.option[this.answerIndex] === value;
-  }
-  getAnswer() {
-    return this.option[this.answerIndex];
-  }
-}
+// ================================
 
-let questionOne = new createQuestion(
-  "who is the vice captain of india in test cricket",
-  ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
-  0
+// class createQuestion {
+//   constructor(title, option = [], answerIndex) {
+//     this.title = title;
+//     this.option = option;
+//     this.answerIndex = answerIndex;
+//   }
+//   checkAnswer(value) {
+//     return this.option[this.answerIndex] === value;
+//   }
+//   getAnswer() {
+//     return this.option[this.answerIndex];
+//   }
+// }
+
+// let questionOne = new createQuestion(
+//   "who is the vice captain of india in test cricket",
+//   ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
+//   0
+// );
+// console.log(questionOne);
+// console.log(questionOne.checkAnswer("Rohit Sharma"));
+// console.log(questionOne.checkAnswer("Ishant Sharma"));
+// console.log(questionOne.getAnswer());
+
+//
+//
+//
+
+function createQuestion(t, o = [], ai) {
+  var question = {};
+  question.titel = t;
+  question.option = o;
+  question.answerIndex = ai;
+  question.getAnswer = function() {
+    return question.option[ai];
+  };
+  question.checkAnswer = function(value) {
+    return question.option[ai] === value;
+  };
+  return question;
+}
+var questionOne = createQuestion(
+  "Who is finance minister of India",
+  ["Amit Shaha", "Nitin Gadkari", "Nirmala Sitharaman", "Rajnath Singh"],
+  2
 );
-console.log(questionOne);
-console.log(questionOne.checkAnswer("Rohit Sharma"));
-console.log(questionOne.checkAnswer("Ishant Sharma"));
-console.log(questionOne.getAnswer());
+console.log(questionOne.checkAnswer("Nitin Gadkari"));
+console.log(questionOne.checkAnswer("Nirmala Sitharaman"));
