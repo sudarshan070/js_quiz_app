@@ -84,24 +84,50 @@
 
 //  __proto__
 
-var questionMethod = {
-  checkAnswer: function(value) {
-    return this.option[this.answerIndex] === value;
-  },
-  getAnswer: function() {
-    return this.option[this.answerIndex];
-  }
-};
+// var questionMethod = {
+//   checkAnswer: function(value) {
+//     return this.option[this.answerIndex] === value;
+//   },
+//   getAnswer: function() {
+//     return this.option[this.answerIndex];
+//   }
+// };
+
+// function createQuestion(title, option = [], answerIndex) {
+//   let question = Object.create(questionMethod);
+//   question.title = title;
+//   question.option = option;
+//   question.answerIndex = answerIndex;
+
+//   return question;
+// }
+// let questionOne = createQuestion(
+//   "who is the vice captain of india in test cricket",
+//   ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
+//   0
+// );
+// console.log(questionOne);
+// console.log(questionOne.checkAnswer("Rohit Sharma"));
+// console.log(questionOne.checkAnswer("Ishant Sharma"));
+// console.log(questionOne.getAnswer());
+
+//
 
 function createQuestion(title, option = [], answerIndex) {
-  let question = Object.create(questionMethod);
-  question.title = title;
-  question.option = option;
-  question.answerIndex = answerIndex;
-
-  return question;
+  this.title = title;
+  this.option = option;
+  this.answerIndex = answerIndex;
 }
-let questionOne = createQuestion(
+
+createQuestion.prototype.checkAnswer = function(value) {
+  return this.option[this.answerIndex] === value;
+};
+
+createQuestion.prototype.getAnswer = function() {
+  return this.option[this.answerIndex];
+};
+
+let questionOne = new createQuestion(
   "who is the vice captain of india in test cricket",
   ["Ajinkya Rahane", "Rohit Sharma", "Virat Kohli", "Ishant Sharma"],
   0
