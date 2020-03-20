@@ -112,6 +112,7 @@
 // console.log(questionOne.getAnswer());
 
 //======================
+// pesudoclasical
 
 // function createQuestion(title, option = [], answerIndex) {
 //   this.title = title;
@@ -164,7 +165,7 @@
 // console.log(questionOne.getAnswer());
 
 //
-//
+//============----------=======
 //
 
 // function createQuestion(t, o = [], ai) {
@@ -189,24 +190,49 @@
 // console.log(questionOne.checkAnswer("Nirmala Sitharaman"));
 
 //
-var questionMethod = {
-  checkAnswer: function(value) {
-    return this.option[this.answerIndex] === value;
-  },
-  getAnswer: function() {
-    return this.option[this.answerIndex];
-  }
-};
+// =============================
+// dunder proto
+
+// var questionMethod = {
+//   checkAnswer: function(value) {
+//     return this.option[this.answerIndex] === value;
+//   },
+//   getAnswer: function() {
+//     return this.option[this.answerIndex];
+//   }
+// };
+
+// function createQuestion(t, o = [], ai) {
+//   var question = Object.create(questionMethod);
+//   question.titel = t;
+//   question.option = o;
+//   question.answerIndex = ai;
+//   return question;
+// }
+
+// var questionOne = createQuestion(
+//   "Who is finance minister of India",
+//   ["Amit Shaha", "Nitin Gadkari", "Nirmala Sitharaman", "Rajnath Singh"],
+//   2
+// );
+// console.log(questionOne.checkAnswer("Nitin Gadkari"));
+// console.log(questionOne.checkAnswer("Nirmala Sitharaman"));
+
+// ============
 
 function createQuestion(t, o = [], ai) {
-  var question = Object.create(questionMethod);
-  question.titel = t;
-  question.option = o;
-  question.answerIndex = ai;
-  return question;
+  this.titel = t;
+  this.option = o;
+  this.answerIndex = ai;
 }
+createQuestion.prototype.checkAnswer = function(value) {
+  return this.option[this.answerIndex] === value;
+};
+createQuestion.prototype.getAnswer = function() {
+  return this.option[this.answerIndex];
+};
 
-var questionOne = createQuestion(
+var questionOne = new createQuestion(
   "Who is finance minister of India",
   ["Amit Shaha", "Nitin Gadkari", "Nirmala Sitharaman", "Rajnath Singh"],
   2
